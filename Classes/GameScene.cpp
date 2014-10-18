@@ -33,8 +33,15 @@ bool GameScene::init()
     edgeNode->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ));
     edgeNode->setPhysicsBody(edgeBody);
     
-    this->addChild(edgeNode);
+    auto rabbit = Sprite::create("rabbit.png");
+    rabbit->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ) );
     
+    auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(0,1,0));
+    rabbit->setPhysicsBody(rabbitBody);
+
+
+    this->addChild(rabbit);
+    this->addChild(edgeNode);
     return true;
 }
 
