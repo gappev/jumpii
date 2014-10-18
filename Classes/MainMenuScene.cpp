@@ -26,7 +26,7 @@ bool MainMenuScene::init()
     
     logo = Sprite::create("logo.png");
     logo->setPosition(Point(visibleSize.width/2, (visibleSize.height/4)*3 ));
-    logo->setScale(0.6, 0.6);
+
 
     playButton = MenuItemFont::create("Tap To Start", CC_CALLBACK_0(MainMenuScene::startGame, this));
     playButton->setFontSizeObj(100);
