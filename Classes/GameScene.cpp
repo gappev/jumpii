@@ -4,8 +4,14 @@ USING_NS_CC;
 
 Scene* GameScene::createScene()
 {
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    
+    // Comentar o buscar manera de solo ejecutar cuando este en debug...   <---
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    
     auto layer = GameScene::create();
+    layer->SetPhysicsWorld(scene->getPhysicsWorld());
+    
     scene->addChild(layer);
     return scene;
 }
@@ -21,20 +27,25 @@ bool GameScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 10);
+    
+    auto edgeNode = Node::create();
+    edgeNode->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ));
+    edgeNode->setPhysicsBody(edgeBody);
+    
+    auto rabbit = Sprite::create("rabbit.png");
+    rabbit->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ) );
+    
+    auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(0,1,0));
+    rabbit->setPhysicsBody(rabbitBody);
+
+
+    this->addChild(rabbit);
+    this->addChild(edgeNode);
     return true;
 }
 
-
-void GameScene::menuCloseCallback(Ref* pSender)
+void GameScene::SetPhysicsWorld(cocos2d::PhysicsWorld *world)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+    this->world = world;
 }

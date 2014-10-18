@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "GameData.h"
 
+using namespace cocos2d;
+
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -11,9 +13,14 @@ public:
 
     virtual bool init();
     
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
     CREATE_FUNC(GameScene);
+    
+private:
+    // Properties
+    PhysicsWorld *world;
+    
+    // Functions
+    void SetPhysicsWorld ( PhysicsWorld *world );
 };
 
 #endif // __GameScene_SCENE_H__
