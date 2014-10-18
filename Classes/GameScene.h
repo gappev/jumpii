@@ -18,6 +18,7 @@ public:
 private:
     // Properties
     PhysicsWorld *world;
+    Sprite *background;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );

@@ -21,6 +21,7 @@ public:
 private:
     // Properties
     MenuItemFont *playButton;
+    Sprite *background;
     
     // Functions
     void startGame();

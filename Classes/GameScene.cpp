@@ -27,6 +27,10 @@ bool GameScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    // Background
+    background = Sprite::create("background.png");
+    background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
+
     auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 10);
     
     auto edgeNode = Node::create();
@@ -40,8 +44,10 @@ bool GameScene::init()
     rabbit->setPhysicsBody(rabbitBody);
 
 
-    this->addChild(rabbit);
-    this->addChild(edgeNode);
+
+    this->addChild(rabbit,1);
+    this->addChild(edgeNode,1);
+    this->addChild(background);
     return true;
 }
 

@@ -21,13 +21,17 @@ bool MainMenuScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    background = Sprite::create("background.png");
+    background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
     
     playButton = MenuItemFont::create("Tap To Start", CC_CALLBACK_0(MainMenuScene::startGame, this));
+    playButton->setFontSizeObj(100);
     
     Menu *menu = Menu::create(playButton, NULL);
-    menu->alignItemsVertically();
+    menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
-    this->addChild(menu);
+    this->addChild(background);
+    this->addChild(menu, 1);
     return true;
 }
 
