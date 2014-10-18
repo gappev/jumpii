@@ -19,8 +19,22 @@ bool MainMenu::init()
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+ 
     
+    playButton = CCMenuItemFont::create("Tap to Start", this, menu_selector(MainMenu::startGame));
+    playButton->setFontSize(14);
+    
+    
+    CCMenu *mainMenu = CCMenu::create(playButton, NULL);
+    mainMenu->alignItemsVertically();
+    
+    this->addChild(mainMenu);
     return true;
+}
+
+void MainMenu::startGame()
+{
+    CCDirector::sharedDirector()->replaceScene(GameScene::scene());
 }
 
 
