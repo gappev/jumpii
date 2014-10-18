@@ -2,6 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "GameScene.h"
+
+using namespace cocos2d;
 
 class MainMenuScene : public cocos2d::Layer
 {
@@ -13,6 +16,13 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     CREATE_FUNC(MainMenuScene);
+    
+private:
+    // Properties
+    MenuItemFont *playButton;
+    
+    // Functions
+    void startGame();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

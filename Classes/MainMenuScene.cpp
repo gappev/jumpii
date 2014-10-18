@@ -22,9 +22,18 @@ bool MainMenuScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     
+    playButton = MenuItemFont::create("Tap To Start", CC_CALLBACK_0(MainMenuScene::startGame, this));
     
+    Menu *menu = Menu::create(playButton, NULL);
+    menu->alignItemsVertically();
     
+    this->addChild(menu);
     return true;
+}
+
+void MainMenuScene::startGame()
+{
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5f, GameScene::createScene()));
 }
 
 
