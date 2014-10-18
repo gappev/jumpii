@@ -2,6 +2,7 @@
 #define __GameScene_SCENE_H__
 
 #include "cocos2d.h"
+#include "GameData.h"
 
 class GameScene : public cocos2d::Layer
 {

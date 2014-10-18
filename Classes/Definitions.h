@@ -11,4 +11,6 @@
 
 #define TRANSITION_TIME 0.5f
 
+#define SCORES_DATA_KEY "SCORES"
+
 #endif
