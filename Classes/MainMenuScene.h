@@ -6,14 +6,14 @@
 
 using namespace cocos2d;
 
-class MainMenu : public cocos2d::CCLayer
+class MainMenuScene : public cocos2d::CCLayer
 {
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();
     void menuCloseCallback(CCObject* pSender);
     
-    CREATE_FUNC(MainMenu);
+    CREATE_FUNC(MainMenuScene);
     
 private:
     //Properties
