@@ -24,3 +24,6 @@ build/
 *~.nib
 
 *.orig
+
+#Cocos2d
+cocos2d/
