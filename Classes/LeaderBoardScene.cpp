@@ -1,16 +1,16 @@
-#include "MainMenu.h"
+#include "LeaderBoardScene.h"
 
 USING_NS_CC;
 
-CCScene* MainMenu::scene()
+CCScene* LeaderBoardScene::scene()
 {
     CCScene *scene = CCScene::create();
-    MainMenu *layer = MainMenu::create();
+    LeaderBoardScene *layer = LeaderBoardScene::create();
     scene->addChild(layer);
     return scene;
 }
 
-bool MainMenu::init()
+bool LeaderBoardScene::init()
 {
     if ( !CCLayer::init() )
     {
@@ -24,7 +24,7 @@ bool MainMenu::init()
 }
 
 
-void MainMenu::menuCloseCallback(CCObject* pSender)
+void LeaderBoardScene::menuCloseCallback(CCObject* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");

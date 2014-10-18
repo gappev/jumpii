@@ -246,6 +246,10 @@
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2392DD0819F2CFDF009D25CE /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2392DD0219F2CFDF009D25CE /* GameOverScene.cpp */; };
+		2392DD0919F2CFDF009D25CE /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2392DD0419F2CFDF009D25CE /* GameScene.cpp */; };
+		2392DD0A19F2CFDF009D25CE /* LeaderBoardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2392DD0619F2CFDF009D25CE /* LeaderBoardScene.cpp */; };
+		2392DD0C19F2D144009D25CE /* MainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 2392DD0B19F2D144009D25CE /* MainMenu */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -780,6 +784,13 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* jumpii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jumpii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2392DD0219F2CFDF009D25CE /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
+		2392DD0319F2CFDF009D25CE /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		2392DD0419F2CFDF009D25CE /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		2392DD0519F2CFDF009D25CE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		2392DD0619F2CFDF009D25CE /* LeaderBoardScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeaderBoardScene.cpp; sourceTree = "<group>"; };
+		2392DD0719F2CFDF009D25CE /* LeaderBoardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardScene.h; sourceTree = "<group>"; };
+		2392DD0B19F2D144009D25CE /* MainMenu */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MainMenu; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		37C62C0718E156AE00D16FC4 /* ExtensionExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionExport.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
@@ -1316,10 +1327,17 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2392DD0219F2CFDF009D25CE /* GameOverScene.cpp */,
+				2392DD0319F2CFDF009D25CE /* GameOverScene.h */,
+				2392DD0419F2CFDF009D25CE /* GameScene.cpp */,
+				2392DD0519F2CFDF009D25CE /* GameScene.h */,
+				2392DD0619F2CFDF009D25CE /* LeaderBoardScene.cpp */,
+				2392DD0719F2CFDF009D25CE /* LeaderBoardScene.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* MainMenu.cpp */,
 				1AFAF8B616D35DE700DB1158 /* MainMenu.h */,
+				2392DD0B19F2D144009D25CE /* MainMenu */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -2025,6 +2043,7 @@
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				2392DD0C19F2D144009D25CE /* MainMenu in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2190,6 +2209,7 @@
 				15C0B55E196D412F007F909D /* CCDisplayFactory.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
+				2392DD0819F2CFDF009D25CE /* GameOverScene.cpp in Sources */,
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15C0B591196D412F007F909D /* SliderReader.cpp in Sources */,
 				15C0B592196D412F007F909D /* TextFieldReader.cpp in Sources */,
@@ -2241,6 +2261,7 @@
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
+				2392DD0919F2CFDF009D25CE /* GameScene.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
@@ -2266,6 +2287,7 @@
 				15C0B576196D412F007F909D /* UIPageView.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
+				2392DD0A19F2CFDF009D25CE /* LeaderBoardScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
