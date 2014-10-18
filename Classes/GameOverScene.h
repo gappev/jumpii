@@ -1,9 +1,9 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __GameOverScene_SCENE_H__
+#define __GameOverScene_SCENE_H__
 
 #include "cocos2d.h"
 
-class MainMenuScene : public cocos2d::Layer
+class GameOverScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
@@ -12,7 +12,7 @@ public:
     
     void menuCloseCallback(cocos2d::Ref* pSender);
     
-    CREATE_FUNC(MainMenuScene);
+    CREATE_FUNC(GameOverScene);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __GameOverScene_SCENE_H__

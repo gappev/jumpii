@@ -1,9 +1,9 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __LeaderBoardScene_SCENE_H__
+#define __LeaderBoardScene_SCENE_H__
 
 #include "cocos2d.h"
 
-class MainMenuScene : public cocos2d::Layer
+class LeaderBoardScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
@@ -12,7 +12,7 @@ public:
     
     void menuCloseCallback(cocos2d::Ref* pSender);
     
-    CREATE_FUNC(MainMenuScene);
+    CREATE_FUNC(LeaderBoardScene);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __LeaderBoardScene_SCENE_H__
