@@ -33,7 +33,7 @@ bool MainMenuScene::init()
 
 void MainMenuScene::startGame()
 {
-    Director::getInstance()->replaceScene(TransitionFade::create(0.5f, GameScene::createScene()));
+    Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, GameScene::createScene()));
 }
 
 
