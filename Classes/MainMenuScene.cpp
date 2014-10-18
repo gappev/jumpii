@@ -5,7 +5,7 @@ USING_NS_CC;
 CCScene* MainMenuScene::scene()
 {
     CCScene *scene = CCScene::create();
-    MainMenu *layer = MainMenuScene::create();
+    MainMenuScene *layer = MainMenuScene::create();
     scene->addChild(layer);
     return scene;
 }
@@ -21,7 +21,7 @@ bool MainMenuScene::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
  
     
-    playButton = CCMenuItemFont::create("Tap to Start", this, menu_selector(MainMenu::startGame));
+    playButton = CCMenuItemFont::create("Tap to Start", this, menu_selector(MainMenuScene::startGame));
     playButton->setFontSize(14);
     
     
@@ -32,7 +32,7 @@ bool MainMenuScene::init()
     return true;
 }
 
-void MainMenuScen::startGame()
+void MainMenuScene::startGame()
 {
     CCDirector::sharedDirector()->replaceScene(GameScene::scene());
 }
