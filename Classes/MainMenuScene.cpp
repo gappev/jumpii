@@ -24,12 +24,16 @@ bool MainMenuScene::init()
     background = Sprite::create("background.png");
     background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
     
+    logo = Sprite::create("logo.png");
+    logo->setPosition(Point(visibleSize.width/2, (visibleSize.height/4)*3 ));
+
     playButton = MenuItemFont::create("Tap To Start", CC_CALLBACK_0(MainMenuScene::startGame, this));
     playButton->setFontSizeObj(100);
     
     Menu *menu = Menu::create(playButton, NULL);
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
+    this->addChild(logo,1);
     this->addChild(background);
     this->addChild(menu, 1);
     return true;
