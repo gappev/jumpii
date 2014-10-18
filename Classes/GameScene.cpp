@@ -40,15 +40,27 @@ bool GameScene::init()
     auto rabbit = Sprite::create("rabbit.png");
     rabbit->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ) );
     
-    auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(0,1,0));
+    auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
     rabbit->setPhysicsBody(rabbitBody);
 
+    // Temporal
+    backButton = MenuItemFont::create("Back", CC_CALLBACK_0(GameScene::goToMainMenu, this));
+    backButton->setFontSizeObj(100);
+    
+    Menu *menu = Menu::create(backButton, NULL);
+    menu->setPosition(Point(visibleSize.width/2, visibleSize.height - backButton->getContentSize().height/2));
+    //
 
-
+    this->addChild(menu,1);
     this->addChild(rabbit,1);
     this->addChild(edgeNode,1);
     this->addChild(background);
     return true;
+}
+
+void GameScene::goToMainMenu()
+{
+    Director::getInstance()->replaceScene(MainMenuScene::createScene());
 }
 
 void GameScene::SetPhysicsWorld(cocos2d::PhysicsWorld *world)

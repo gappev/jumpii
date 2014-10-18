@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "GameData.h"
+#include "MainMenuScene.h"
 
 using namespace cocos2d;
 
@@ -19,9 +20,11 @@ private:
     // Properties
     PhysicsWorld *world;
     Sprite *background;
+    MenuItemFont *backButton;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );
+    void goToMainMenu();
 };
 
 #endif // __GameScene_SCENE_H__
