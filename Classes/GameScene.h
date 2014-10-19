@@ -5,6 +5,7 @@
 #include "GameData.h"
 #include "MainMenuScene.h"
 #include "Rabbit.h"
+#include "Platform.h"
 
 using namespace cocos2d;
 

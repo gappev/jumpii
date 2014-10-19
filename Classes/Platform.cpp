@@ -17,13 +17,15 @@ Platform::Platform()
 void Platform::SpawnPlatform(cocos2d::Layer *layer, int pos)
 {
     auto platform = Sprite::create("platform-1.png");
-    auto platformBody = PhysicsBody::createBox(platform->getContentSize());
+    auto platformBody = PhysicsBody::createBox(Size(Point(platform->getContentSize().width, platform->getContentSize().height- 150)));
     
     platformBody->setDynamic(false);
     platformBody->setContactTestBitmask(true);
     
     platform->setPhysicsBody(platformBody);
-    platform->setPosition(Point(origin.x + (pos * platform->getContentSize().width), origin.y + platform->getContentSize().height));
+    int x = origin.x + platform->getContentSize().width / 2 + (0 * platform->getContentSize().width);
+    int y = origin.y + platform->getContentSize().height / 2;
+    platform->setPosition(Point( x,y ));
     
     layer->addChild(platform,100);
 }

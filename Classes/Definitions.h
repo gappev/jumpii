@@ -17,4 +17,6 @@
 
 #define PLATFORM_HEIGHT 450
 
+#define PLATFORM_WIDTH 320
+
 #endif

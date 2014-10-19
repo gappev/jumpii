@@ -14,8 +14,10 @@ Rabbit::Rabbit(Layer *layer)
     origin = Director::getInstance( )->getVisibleOrigin( );
     
     auto rabbit = Sprite::create("rabbit.png");
-    CCLOG("%f",rabbit->getContentSize().width);
-    rabbit->setPosition(Point( origin.x + rabbit->getContentSize().width/2, origin.y + rabbit->getContentSize().height/2 + PLATFORM_HEIGHT) );
+    
+    int x =origin.x + rabbit->getContentSize().width/2 + (PLATFORM_WIDTH/5);
+    int y =origin.y + rabbit->getContentSize().height/2 + PLATFORM_HEIGHT;
+    rabbit->setPosition(Point( x,y ) );
     
     auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
     rabbitBody->setCollisionBitmask( RABBIT_COLLISION_BITMASK );
