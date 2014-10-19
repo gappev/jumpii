@@ -55,7 +55,7 @@ bool GameScene::init()
     platformBody->setContactTestBitmask(true);
     
     platform->setPhysicsBody(platformBody);
-    platform->setPosition(Point(origin.x + platform->getContentSize().width / 2 + (1 * platform->getContentSize().width), origin.y + platform->getContentSize().height / 2));
+    platform->setPosition(Point(origin.x + platform->getContentSize().width / 2 + (0 * platform->getContentSize().width), origin.y + platform->getContentSize().height / 2));
     
     this->addChild(platform,100);
     
