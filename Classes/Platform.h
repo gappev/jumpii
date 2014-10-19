@@ -10,6 +10,7 @@
 #define __jumpii__Platform__
 
 #include "cocos2d.h"
+#include "Definitions.h"
 
 using namespace cocos2d;
 

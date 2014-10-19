@@ -47,8 +47,12 @@ bool GameScene::init()
 
     rabbit = new Rabbit(this);
     Platform *plat = new Platform();
-    plat->SpawnPlatform(this, 1);
-        
+    
+    for(int i=0; i<8; i++)
+    {
+        plat->SpawnPlatform(this, i);
+    }
+    
     this->addChild(menu, 1);
     this->addChild(edgeNode, 1);
     this->addChild(background);

@@ -16,7 +16,7 @@ Rabbit::Rabbit(Layer *layer)
     auto rabbit = Sprite::create("rabbit.png");
     
     int x =origin.x + rabbit->getContentSize().width/2 + (PLATFORM_WIDTH/5);
-    int y =origin.y + rabbit->getContentSize().height/2 + PLATFORM_HEIGHT;
+    int y =origin.y + rabbit->getContentSize().height/2 + PLATFORM_HEIGHT - PLATFORM_HEIGHT_GAP;
     rabbit->setPosition(Point( x,y ) );
     
     auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
