@@ -58,10 +58,10 @@ bool GameScene::init()
     twoMovementButton = Sprite::create("button.png");
     
     oneMovementButton->setAnchorPoint(Point(0,0));
-    oneMovementButton->setPosition(0, 0);
+    oneMovementButton->setPosition(40, 40);
     
     twoMovementButton->setAnchorPoint(Point(1,0));
-    twoMovementButton->setPosition(visibleSize.width, 0);
+    twoMovementButton->setPosition(visibleSize.width - 40, 40);
     
     this->addChild(oneMovementButton,200);
     this->addChild(twoMovementButton,200);
