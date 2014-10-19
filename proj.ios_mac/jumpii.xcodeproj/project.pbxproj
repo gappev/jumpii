@@ -66,6 +66,7 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		BF1F18C419F361E20060EDF6 /* Rabbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1F18C219F361E20060EDF6 /* Rabbit.cpp */; };
 		BF2507F819F2F7A70004D315 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2507F619F2F7A70004D315 /* GameData.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -166,6 +167,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BF1F18C219F361E20060EDF6 /* Rabbit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rabbit.cpp; sourceTree = "<group>"; };
+		BF1F18C319F361E20060EDF6 /* Rabbit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rabbit.h; sourceTree = "<group>"; };
 		BF2507F519F2F6BB0004D315 /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		BF2507F619F2F7A70004D315 /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		BF2507F719F2F7A70004D315 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 		235CCAEF19F31EFB00AD435F /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				BF1F18C219F361E20060EDF6 /* Rabbit.cpp */,
+				BF1F18C319F361E20060EDF6 /* Rabbit.h */,
 				235CCAEC19F31E7300AD435F /* Platform.cpp */,
 				235CCAED19F31E7300AD435F /* Platform.h */,
 			);
@@ -535,6 +540,7 @@
 				46880B8A19C43A87006E1F66 /* MainMenuScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				235CCAEE19F31E7300AD435F /* Platform.cpp in Sources */,
+				BF1F18C419F361E20060EDF6 /* Rabbit.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				235CCADA19F2EE3F00AD435F /* GameScene.cpp in Sources */,
 				235CCAD919F2EE3F00AD435F /* GameOverScene.cpp in Sources */,

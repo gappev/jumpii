@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "GameData.h"
 #include "MainMenuScene.h"
+#include "Rabbit.h"
 
 using namespace cocos2d;
 
@@ -21,6 +22,7 @@ private:
     PhysicsWorld *world;
     Sprite *background;
     MenuItemFont *backButton;
+    Rabbit *rabbit;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );

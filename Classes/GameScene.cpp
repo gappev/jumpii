@@ -37,12 +37,6 @@ bool GameScene::init()
     edgeNode->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ));
     edgeNode->setPhysicsBody(edgeBody);
     
-    auto rabbit = Sprite::create("rabbit.png");
-    rabbit->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ) );
-    
-    auto rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
-    rabbit->setPhysicsBody(rabbitBody);
-
     // Temporal
     backButton = MenuItemFont::create("Back", CC_CALLBACK_0(GameScene::goToMainMenu, this));
     backButton->setFontSizeObj(100);
@@ -51,9 +45,10 @@ bool GameScene::init()
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height - backButton->getContentSize().height/2));
     //
 
-    this->addChild(menu,1);
-    this->addChild(rabbit,1);
-    this->addChild(edgeNode,1);
+    rabbit = new Rabbit(this);
+    
+    this->addChild(menu);
+    this->addChild(edgeNode);
     this->addChild(background);
     return true;
 }

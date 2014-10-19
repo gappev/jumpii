@@ -13,4 +13,6 @@
 
 #define SCORES_DATA_KEY "SCORES"
 
+#define RABBIT_COLLISION_BITMASK 0x000001
+
 #endif
