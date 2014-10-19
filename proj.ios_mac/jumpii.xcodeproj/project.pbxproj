@@ -18,6 +18,7 @@
 		235CCAEB19F31D4600AD435F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 235CCAEA19F31D4600AD435F /* logo.png */; };
 		235CCAEE19F31E7300AD435F /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAEC19F31E7300AD435F /* Platform.cpp */; };
 		235CCB1419F31F9200AD435F /* platform-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 235CCB1319F31F9200AD435F /* platform-1.png */; };
+		23B7D6B319F4111B00716EDE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B7D6B219F4111B00716EDE /* button.png */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
 		46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -122,6 +123,7 @@
 		235CCAEC19F31E7300AD435F /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
 		235CCAED19F31E7300AD435F /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		235CCB1319F31F9200AD435F /* platform-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "platform-1.png"; sourceTree = "<group>"; };
+		23B7D6B219F4111B00716EDE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23B7D6B219F4111B00716EDE /* button.png */,
 				BF9FE19A19F375BD0093E59B /* rabbit.png */,
 				235CCB1319F31F9200AD435F /* platform-1.png */,
 				235CCAEA19F31D4600AD435F /* logo.png */,
@@ -510,6 +513,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				23B7D6B319F4111B00716EDE /* button.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,

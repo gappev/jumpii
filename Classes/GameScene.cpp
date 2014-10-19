@@ -53,6 +53,19 @@ bool GameScene::init()
         plat->SpawnPlatform(this, i);
     }
     
+    // Adding movement buttons
+    oneMovementButton = Sprite::create("button.png");
+    twoMovementButton = Sprite::create("button.png");
+    
+    oneMovementButton->setAnchorPoint(Point(0,0));
+    oneMovementButton->setPosition(0, 0);
+    
+    twoMovementButton->setAnchorPoint(Point(1,0));
+    twoMovementButton->setPosition(visibleSize.width, 0);
+    
+    this->addChild(oneMovementButton,200);
+    this->addChild(twoMovementButton,200);
+    
     this->addChild(menu, 1);
     this->addChild(edgeNode, 1);
     this->addChild(background);

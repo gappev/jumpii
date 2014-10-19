@@ -21,7 +21,7 @@ public:
 private:
     // Properties
     PhysicsWorld *world;
-    Sprite *background;
+    Sprite *background, *oneMovementButton, *twoMovementButton;
     MenuItemFont *backButton;
     Rabbit *rabbit;
     
