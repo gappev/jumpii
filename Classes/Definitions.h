@@ -15,4 +15,6 @@
 
 #define RABBIT_COLLISION_BITMASK 0x000001
 
+#define PLATFORM_HEIGHT 450
+
 #endif

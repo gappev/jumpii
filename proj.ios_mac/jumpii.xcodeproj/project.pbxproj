@@ -14,7 +14,6 @@
 		235CCAD919F2EE3F00AD435F /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD319F2EE3F00AD435F /* GameOverScene.cpp */; };
 		235CCADA19F2EE3F00AD435F /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD519F2EE3F00AD435F /* GameScene.cpp */; };
 		235CCADB19F2EE3F00AD435F /* LeaderBoardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD719F2EE3F00AD435F /* LeaderBoardScene.cpp */; };
-		235CCAE019F300D100AD435F /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 235CCADF19F300D100AD435F /* rabbit.png */; };
 		235CCAE219F3024E00AD435F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 235CCAE119F3024E00AD435F /* background.png */; };
 		235CCAEB19F31D4600AD435F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 235CCAEA19F31D4600AD435F /* logo.png */; };
 		235CCAEE19F31E7300AD435F /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAEC19F31E7300AD435F /* Platform.cpp */; };
@@ -68,6 +67,7 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		BF1F18C419F361E20060EDF6 /* Rabbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1F18C219F361E20060EDF6 /* Rabbit.cpp */; };
 		BF2507F819F2F7A70004D315 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2507F619F2F7A70004D315 /* GameData.cpp */; };
+		BF9FE19B19F375BD0093E59B /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9FE19A19F375BD0093E59B /* rabbit.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -117,7 +117,6 @@
 		235CCAD619F2EE3F00AD435F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		235CCAD719F2EE3F00AD435F /* LeaderBoardScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeaderBoardScene.cpp; sourceTree = "<group>"; };
 		235CCAD819F2EE3F00AD435F /* LeaderBoardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardScene.h; sourceTree = "<group>"; };
-		235CCADF19F300D100AD435F /* rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit.png; sourceTree = "<group>"; };
 		235CCAE119F3024E00AD435F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		235CCAEA19F31D4600AD435F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		235CCAEC19F31E7300AD435F /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		BF2507F519F2F6BB0004D315 /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		BF2507F619F2F7A70004D315 /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		BF2507F719F2F7A70004D315 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		BF9FE19A19F375BD0093E59B /* rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -301,10 +301,10 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF9FE19A19F375BD0093E59B /* rabbit.png */,
 				235CCB1319F31F9200AD435F /* platform-1.png */,
 				235CCAEA19F31D4600AD435F /* logo.png */,
 				235CCAE119F3024E00AD435F /* background.png */,
-				235CCADF19F300D100AD435F /* rabbit.png */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7819C43A67006E1F66 /* fonts */,
@@ -503,10 +503,10 @@
 				235CCAE219F3024E00AD435F /* background.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
-				235CCAE019F300D100AD435F /* rabbit.png in Resources */,
 				46880B7F19C43A67006E1F66 /* Marker Felt.ttf in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				BF9FE19B19F375BD0093E59B /* rabbit.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,

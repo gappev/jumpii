@@ -14,7 +14,7 @@ Platform::Platform()
     origin = Director::getInstance( )->getVisibleOrigin( );
 }
 
-void Platform::SpawnPlatform(cocos2d::Layer *layer)
+void Platform::SpawnPlatform(cocos2d::Layer *layer, int pos)
 {
     auto platform = Sprite::create("platform-1.png");
     auto platformBody = PhysicsBody::createBox(platform->getContentSize());
@@ -23,7 +23,7 @@ void Platform::SpawnPlatform(cocos2d::Layer *layer)
     platformBody->setContactTestBitmask(true);
     
     platform->setPhysicsBody(platformBody);
-    platform->setPosition(Point());
+    platform->setPosition(Point(origin.x + (pos * platform->getContentSize().width), origin.y + platform->getContentSize().height));
     
-    layer->addChild(platform);
+    layer->addChild(platform,100);
 }

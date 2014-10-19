@@ -47,8 +47,20 @@ bool GameScene::init()
 
     rabbit = new Rabbit(this);
     
-    this->addChild(menu);
-    this->addChild(edgeNode);
+    auto platform = Sprite::create("platform-1.png");
+    CCLOG("%f",platform->getContentSize().width);
+    auto platformBody = PhysicsBody::createBox(platform->getContentSize());
+    
+    platformBody->setDynamic(false);
+    platformBody->setContactTestBitmask(true);
+    
+    platform->setPhysicsBody(platformBody);
+    platform->setPosition(Point(origin.x + platform->getContentSize().width / 2 + (1 * platform->getContentSize().width), origin.y + platform->getContentSize().height / 2));
+    
+    this->addChild(platform,100);
+    
+    this->addChild(menu, 1);
+    this->addChild(edgeNode, 1);
     this->addChild(background);
     return true;
 }
