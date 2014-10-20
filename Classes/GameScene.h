@@ -24,10 +24,14 @@ private:
     Sprite *background, *oneMovementButton, *twoMovementButton;
     MenuItemFont *backButton;
     Rabbit *rabbit;
+    Node *platforms;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );
     void goToMainMenu();
+    
+    //Events
+    bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event );
 };
 
 #endif // __GameScene_SCENE_H__

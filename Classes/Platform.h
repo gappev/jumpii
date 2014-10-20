@@ -19,7 +19,7 @@ class Platform
 public:
     Platform();
     
-    void SpawnPlatform( Layer* layer, int pos );
+    void SpawnPlatform( Node* layer, int pos );
     
 private:
     cocos2d::Size visibleSize;

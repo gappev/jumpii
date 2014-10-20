@@ -47,10 +47,11 @@ bool GameScene::init()
 
     rabbit = new Rabbit(this);
     Platform *plat = new Platform();
+    platforms = Node::create();
     
     for(int i=0; i<8; i++)
     {
-        plat->SpawnPlatform(this, i);
+        plat->SpawnPlatform(platforms, i);
     }
     
     // Adding movement buttons
@@ -63,9 +64,15 @@ bool GameScene::init()
     twoMovementButton->setAnchorPoint(Point(1,0));
     twoMovementButton->setPosition(visibleSize.width - 40, 40);
     
+    auto touchListener = EventListenerTouchOneByOne::create( );
+    touchListener->setSwallowTouches( true );
+    touchListener->onTouchBegan = CC_CALLBACK_2( GameScene::onTouchBegan, this );
+    Director::getInstance( )->getEventDispatcher( )->addEventListenerWithSceneGraphPriority( touchListener, this );
+    
     this->addChild(oneMovementButton,200);
     this->addChild(twoMovementButton,200);
     
+    this->addChild(platforms, 100);
     this->addChild(menu, 1);
     this->addChild(edgeNode, 1);
     this->addChild(background);
@@ -80,4 +87,21 @@ void GameScene::goToMainMenu()
 void GameScene::SetPhysicsWorld(cocos2d::PhysicsWorld *world)
 {
     this->world = world;
+}
+
+bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
+{
+    Vec2 p = touch->getLocation();
+    Rect rect = oneMovementButton->getBoundingBox();
+    
+    if(rect.containsPoint(p))
+    {
+        CCLOG("click on onemovement");
+        auto platformsAction = MoveBy::create( 0.01f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*8) * 1.5, 0 ));
+        
+        platforms->runAction( platformsAction );
+        return true; // to indicate that we have consumed it.
+    }
+    
+    return false;
 }

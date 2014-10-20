@@ -14,7 +14,7 @@ Platform::Platform()
     origin = Director::getInstance( )->getVisibleOrigin( );
 }
 
-void Platform::SpawnPlatform(cocos2d::Layer *layer, int pos)
+void Platform::SpawnPlatform(cocos2d::Node *layer, int pos)
 {
     auto platform = Sprite::create("platform-1.png");
     auto platformBody = PhysicsBody::createBox(Size(Point(platform->getContentSize().width, platform->getContentSize().height- PLATFORM_HEIGHT_GAP)));
