@@ -86,6 +86,9 @@ bool GameScene::init()
     this->addChild(background);
     
     lastPosition = TOTAL_PLATFORMS;
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("jumping.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("falling.mp3");
     return true;
 }
 
@@ -109,6 +112,7 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
     {
         if (!rabbit->isJumping && !rabbit->isFalling) {
             
+            CocosDenshion::SimpleAudioEngine::getInstance( )->playEffect( "jumping.mp3" );
             CCLOG("click on onemovement");
             rabbit->jumpByOne();
         
@@ -130,6 +134,7 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
     {
         if (!rabbit->isJumping && !rabbit->isFalling) {
             
+            CocosDenshion::SimpleAudioEngine::getInstance( )->playEffect( "jumping.mp3" );
             CCLOG("click on twomovement");
             rabbit->jumpByTwo();
         
@@ -161,6 +166,8 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     }
     if ( ( NO_PLATFORM_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( NO_PLATFORM_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
     {
+        CocosDenshion::SimpleAudioEngine::getInstance( )->playEffect( "falling.mp3" );
+        
         CCLOG("CAIIIIII");
         rabbit->isFalling = true;
         this->getScene()->getPhysicsWorld()->setGravity(Vect(0, -1080));

@@ -35,6 +35,7 @@ Rabbit::Rabbit(Layer *layer)
 }
 
 void Rabbit::jumpByOne() {
+    
     isJumping = true;
     
     auto jump = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/2.5f, 1);

@@ -69,6 +69,8 @@
 		BF1F18C419F361E20060EDF6 /* Rabbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1F18C219F361E20060EDF6 /* Rabbit.cpp */; };
 		BF2507F819F2F7A70004D315 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2507F619F2F7A70004D315 /* GameData.cpp */; };
 		BF9FE19B19F375BD0093E59B /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9FE19A19F375BD0093E59B /* rabbit.png */; };
+		BFA488A819F61D8000474C85 /* jumping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFA488A719F61D8000474C85 /* jumping.mp3 */; };
+		BFA488AA19F6216400474C85 /* falling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFA488A919F6216400474C85 /* falling.mp3 */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -174,6 +176,8 @@
 		BF2507F619F2F7A70004D315 /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		BF2507F719F2F7A70004D315 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		BF9FE19A19F375BD0093E59B /* rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit.png; sourceTree = "<group>"; };
+		BFA488A719F61D8000474C85 /* jumping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = jumping.mp3; path = sounds/jumping.mp3; sourceTree = "<group>"; };
+		BFA488A919F6216400474C85 /* falling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = falling.mp3; path = sounds/falling.mp3; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -303,6 +307,9 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BFA488A919F6216400474C85 /* falling.mp3 */,
+				BFA488A719F61D8000474C85 /* jumping.mp3 */,
+				BFA488A619F61D3D00474C85 /* sounds */,
 				23B7D6B219F4111B00716EDE /* button.png */,
 				BF9FE19A19F375BD0093E59B /* rabbit.png */,
 				235CCB1319F31F9200AD435F /* platform-1.png */,
@@ -391,6 +398,13 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		BFA488A619F61D3D00474C85 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = sounds;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -493,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				BFA488A819F61D8000474C85 /* jumping.mp3 in Resources */,
 				235CCAEB19F31D4600AD435F /* logo.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -505,6 +520,7 @@
 				235CCB1419F31F9200AD435F /* platform-1.png in Resources */,
 				235CCAE219F3024E00AD435F /* background.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				BFA488AA19F6216400474C85 /* falling.mp3 in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				46880B7F19C43A67006E1F66 /* Marker Felt.ttf in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
