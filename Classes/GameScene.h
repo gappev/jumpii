@@ -8,6 +8,7 @@
 #include "Platform.h"
 #include "GameOverScene.h"
 #include "SimpleAudioEngine.h"
+#include "GameData.h"
 
 using namespace cocos2d;
 
@@ -31,6 +32,8 @@ private:
     Label *scoreLabel;
     int lastPosition;
     int score;
+    Size visibleSize;
+    Vec2 origin;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );

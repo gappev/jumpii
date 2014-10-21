@@ -26,8 +26,8 @@ bool GameScene::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
     
     // Background
     background = Sprite::create("background.png");
@@ -48,10 +48,9 @@ bool GameScene::init()
     Menu *menu = Menu::create(backButton, NULL);
     menu->setPosition(Point(0 + backButton->getContentSize().width, visibleSize.height - backButton->getContentSize().height/2));
     //
-
-    auto label = Label::createWithTTF("label test","fonts/Marker Felt.ttf",32);
-    //label->setPosition(Point(visibleSize.width/2,visibleSize.height*0.6));
-    //this->addChild(label);
+    
+    scoreLabel = Label::createWithTTF("Score: 0","Marker Felt.ttf",100);
+    scoreLabel->setPosition(Point(visibleSize.width/2,visibleSize.height - scoreLabel->getContentSize().height/2));
 
     rabbit = new Rabbit(this);
     platform = new Platform();
@@ -81,8 +80,7 @@ bool GameScene::init()
     touchListener->onTouchBegan = CC_CALLBACK_2( GameScene::onTouchBegan, this );
     Director::getInstance( )->getEventDispatcher( )->addEventListenerWithSceneGraphPriority( touchListener, this );
     
-    //this->addChild(scoreLabel);
-
+    this->addChild(scoreLabel,100);
     this->addChild(oneMovementButton,200);
     this->addChild(twoMovementButton,200);
     
@@ -146,8 +144,9 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             CCLOG("click on twomovement");
             rabbit->jumpByTwo();
         
-            auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
-        
+            auto movePlatform = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+            auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
+            
             platforms->runAction( platformsAction );
             platform->SpawnPlatform(platforms, lastPosition);
             platform->SpawnPlatform(platforms, lastPosition+1);
@@ -172,6 +171,7 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     {
         auto scene = MainMenuScene::createScene();
         
+        GameData::getInstance()->addScore(this->score);
         Director::getInstance( )->replaceScene( TransitionFade::create( TRANSITION_TIME, scene ) );
     }
     if ( ( NO_PLATFORM_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( NO_PLATFORM_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
@@ -196,5 +196,7 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
 void GameScene::addToScore(int amountOfJumps)
 {
     this->score += amountOfJumps;
-
+    
+    auto scoreString = __String::createWithFormat( "Score: %i", score );
+    scoreLabel->setString(scoreString->getCString());
 }
