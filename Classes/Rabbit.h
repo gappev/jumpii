@@ -23,6 +23,7 @@ public:
     void jumpByTwo();
     
     bool isJumping;
+    bool isFalling;
     
 private:
     cocos2d::Size visibleSize;
