@@ -28,11 +28,14 @@ private:
     Rabbit *rabbit;
     Node *platforms;
     Platform *platform;
+    Label *scoreLabel;
     int lastPosition;
+    int score;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );
     void goToMainMenu();
+    void addToScore(int amountOfJumps );
     
     //Events
     bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event );

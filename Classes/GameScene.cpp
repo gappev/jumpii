@@ -46,8 +46,12 @@ bool GameScene::init()
     backButton->setFontSizeObj(100);
     
     Menu *menu = Menu::create(backButton, NULL);
-    menu->setPosition(Point(visibleSize.width/2, visibleSize.height - backButton->getContentSize().height/2));
+    menu->setPosition(Point(0 + backButton->getContentSize().width, visibleSize.height - backButton->getContentSize().height/2));
     //
+
+    auto label = Label::createWithTTF("label test","fonts/Marker Felt.ttf",32);
+    label->setPosition(Point(visibleSize.width/2,visibleSize.height*0.6));
+    this->addChild(label);
 
     rabbit = new Rabbit(this);
     platform = new Platform();
@@ -77,6 +81,8 @@ bool GameScene::init()
     touchListener->onTouchBegan = CC_CALLBACK_2( GameScene::onTouchBegan, this );
     Director::getInstance( )->getEventDispatcher( )->addEventListenerWithSceneGraphPriority( touchListener, this );
     
+    //this->addChild(scoreLabel);
+
     this->addChild(oneMovementButton,200);
     this->addChild(twoMovementButton,200);
     
@@ -126,6 +132,8 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             platform->SpawnPlatform(platforms, lastPosition);
             lastPosition+=1;
             
+            addToScore(1);
+
             return true;
         }
         return false; // to indicate that we have consumed it.
@@ -145,6 +153,8 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             platform->SpawnPlatform(platforms, lastPosition+1);
             lastPosition+=2;
             
+            addToScore(2);
+
             return true;
         }
         return false; // to indicate that we have consumed it.
@@ -181,4 +191,10 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     }
     
     return true;
+}
+
+void GameScene::addToScore(int amountOfJumps)
+{
+    this->score += amountOfJumps;
+
 }
