@@ -110,7 +110,11 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
         if (!rabbit->isJumping) {
             rabbit->jumpByOne();
         
-            auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+            DelayTime::create(0.3f);
+
+            
+            auto movePlatform = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+            auto platformsAction = Sequence::create(DelayTime::create(0.1f), movePlatform, NULL);
         
             platforms->runAction( platformsAction );
             platform->SpawnPlatform(platforms, lastPosition);
@@ -144,7 +148,7 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     
     if ( ( EDGE_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( EDGE_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
     {
-        auto scene = GameOverScene::createScene();
+        auto scene = MainMenuScene::createScene();
         
         Director::getInstance( )->replaceScene( TransitionFade::create( TRANSITION_TIME, scene ) );
     }
