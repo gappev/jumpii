@@ -37,10 +37,9 @@ Rabbit::Rabbit(Layer *layer)
 void Rabbit::jumpByOne() {
     isJumping = true;
     
-    auto action1 = MoveBy::create( 0.00001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
-    auto action2 = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/1.6f, 1);
+    auto jump = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/2.5f, 1);
     
-    Sequence* actions = Sequence::create(action1, DelayTime::create(0.1f), action2, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
+    Sequence* actions = Sequence::create( jump, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
     
     rabbit->runAction( actions );
 }
@@ -48,10 +47,9 @@ void Rabbit::jumpByOne() {
 void Rabbit::jumpByTwo() {
     isJumping = true;
     
-    auto action1 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
-    auto action2 = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/1.6f, 1);
+    auto jump = JumpTo::create( 0.5f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/2.0f, 1);
     
-    Sequence* actions = Sequence::create(action1, DelayTime::create(0.1f), action2, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
+    Sequence* actions = Sequence::create( jump, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
     
     rabbit->runAction( actions );
 }

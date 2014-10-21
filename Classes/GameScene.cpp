@@ -112,7 +112,11 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             CCLOG("click on onemovement");
             rabbit->jumpByOne();
         
-            auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+            DelayTime::create(0.3f);
+
+            
+            auto movePlatform = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+            auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
         
             platforms->runAction( platformsAction );
             platform->SpawnPlatform(platforms, lastPosition);
