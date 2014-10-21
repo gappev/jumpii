@@ -159,7 +159,7 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     {
         CCLOG("CAIIIIII");
         rabbit->isFalling = true;
-        this->getScene()->getPhysicsWorld()->setGravity(Vect(0, -980));
+        this->getScene()->getPhysicsWorld()->setGravity(Vect(0, -1080));
         if (a->getCollisionBitmask() == NO_PLATFORM_COLLISION_BITMASK) {
             a->removeFromWorld();
         }
