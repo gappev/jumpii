@@ -8,7 +8,7 @@ Scene* GameScene::createScene()
     auto scene = Scene::createWithPhysics();
     
     // Comentar o buscar manera de solo ejecutar cuando este en debug...   <---
-    //scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     scene->getPhysicsWorld( )->setGravity( Vect( 0, -98 ) );
     
     auto layer = GameScene::create();
