@@ -34,7 +34,7 @@ Rabbit::Rabbit(Layer *layer)
 void Rabbit::jumpByOne() {
     isJumping = true;
     
-    auto jump = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/1.6f, 1);
+    auto jump = JumpTo::create( 0.25f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/2.5f, 1);
     
     Sequence* actions = Sequence::create( jump, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
     
@@ -44,7 +44,7 @@ void Rabbit::jumpByOne() {
 void Rabbit::jumpByTwo() {
     isJumping = true;
     
-    auto jump = JumpTo::create( 0.5f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/1.6f, 1);
+    auto jump = JumpTo::create( 0.5f, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/2.0f, 1);
     
     Sequence* actions = Sequence::create( jump, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
     
