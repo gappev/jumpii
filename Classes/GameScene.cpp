@@ -7,8 +7,8 @@ Scene* GameScene::createScene()
     auto scene = Scene::createWithPhysics();
     
     // Comentar o buscar manera de solo ejecutar cuando este en debug...   <---
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    //scene->getPhysicsWorld( )->setGravity( Vect( 0, 0 ) );
+    //scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld( )->setGravity( Vect( 0, -98 ) );
     
     auto layer = GameScene::create();
     layer->SetPhysicsWorld(scene->getPhysicsWorld());
@@ -33,6 +33,8 @@ bool GameScene::init()
     background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
 
     auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 10);
+    edgeBody->setCollisionBitmask( EDGE_COLLISION_BITMASK );
+    edgeBody->setContactTestBitmask( true );
     
     auto edgeNode = Node::create();
     edgeNode->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ));
@@ -64,6 +66,10 @@ bool GameScene::init()
     
     twoMovementButton->setAnchorPoint(Point(1,0));
     twoMovementButton->setPosition(visibleSize.width - 40, 40);
+    
+    auto contactListener = EventListenerPhysicsContact::create( );
+    contactListener->onContactBegin = CC_CALLBACK_1( GameScene::onContactBegin, this );
+    Director::getInstance( )->getEventDispatcher( )->addEventListenerWithSceneGraphPriority( contactListener, this );
     
     auto touchListener = EventListenerTouchOneByOne::create( );
     touchListener->setSwallowTouches( true );
@@ -102,13 +108,13 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
     {
         CCLOG("click on onemovement");
         if (!rabbit->isJumping) {
-        rabbit->jumpByOne();
+            rabbit->jumpByOne();
         
-        auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+            auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
         
-        platforms->runAction( platformsAction );
-        platform->SpawnPlatform(platforms, lastPosition);
-        lastPosition+=1;
+            platforms->runAction( platformsAction );
+            platform->SpawnPlatform(platforms, lastPosition);
+            lastPosition+=1;
         }
         return true; // to indicate that we have consumed it.
     }
@@ -116,17 +122,32 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
     {
         CCLOG("click on twomovement");
         if (!rabbit->isJumping) {
-        rabbit->jumpByTwo();
+            rabbit->jumpByTwo();
         
-        auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+            auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
         
-        platforms->runAction( platformsAction );
-        platform->SpawnPlatform(platforms, lastPosition);
-        platform->SpawnPlatform(platforms, lastPosition+1);
-        lastPosition+=2;
+            platforms->runAction( platformsAction );
+            platform->SpawnPlatform(platforms, lastPosition);
+            platform->SpawnPlatform(platforms, lastPosition+1);
+            lastPosition+=2;
         }
         return true; // to indicate that we have consumed it.
     }
     
     return false;
+}
+
+bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
+{
+    PhysicsBody *a = contact.getShapeA( )->getBody();
+    PhysicsBody *b = contact.getShapeB( )->getBody();
+    
+    if ( ( EDGE_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( EDGE_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
+    {
+        auto scene = GameOverScene::createScene();
+        
+        Director::getInstance( )->replaceScene( TransitionFade::create( TRANSITION_TIME, scene ) );
+    }
+    
+    return true;
 }

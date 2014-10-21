@@ -6,6 +6,7 @@
 #include "MainMenuScene.h"
 #include "Rabbit.h"
 #include "Platform.h"
+#include "GameOverScene.h"
 
 using namespace cocos2d;
 
@@ -34,6 +35,7 @@ private:
     
     //Events
     bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event );
+    bool onContactBegin( cocos2d::PhysicsContact &contact );
 };
 
 #endif // __GameScene_SCENE_H__

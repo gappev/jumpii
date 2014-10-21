@@ -20,9 +20,10 @@ Rabbit::Rabbit(Layer *layer)
     rabbit->setPosition(Point( x,y ) );
     
     rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
+    rabbitBody->setMass(rabbitBody->getMass()*20);
     rabbitBody->setCollisionBitmask( RABBIT_COLLISION_BITMASK );
     rabbitBody->setContactTestBitmask( true );
-    //rabbitBody->setVelocity(Vect(100, 100));
+    
     rabbit->setPhysicsBody(rabbitBody);
     
     isJumping = false;
@@ -33,7 +34,7 @@ Rabbit::Rabbit(Layer *layer)
 void Rabbit::jumpByOne() {
     isJumping = true;
     
-    auto action1 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
+    auto action1 = MoveBy::create( 0.00001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
     auto action2 = JumpTo::create( 1, Point( rabbit->getPositionX(), rabbit->getPositionY() ), rabbit->getPositionY()/1.6f, 1);
     
     Sequence* actions = Sequence::create(action1, DelayTime::create(0.1f), action2, CallFunc::create(std::bind(&Rabbit::isNotJumping,this)), NULL);
