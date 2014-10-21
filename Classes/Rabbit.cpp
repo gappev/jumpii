@@ -20,13 +20,16 @@ Rabbit::Rabbit(Layer *layer)
     rabbit->setPosition(Point( x,y ) );
     
     rabbitBody = PhysicsBody::createBox(rabbit->getContentSize(), PhysicsMaterial(1,0,1));
-    rabbitBody->setMass(rabbitBody->getMass()*20);
+    //CCLOG("velocity: %fx%f", rabbitBody->getVelocity().x, rabbitBody->getVelocity().y);
+    //rabbitBody->setVelocity(Vect(0, -600.0f));
+    //rabbitBody->setVelocityLimit(-800.0f);
     rabbitBody->setCollisionBitmask( RABBIT_COLLISION_BITMASK );
     rabbitBody->setContactTestBitmask( true );
     
     rabbit->setPhysicsBody(rabbitBody);
     
     isJumping = false;
+    isFalling = false;
     
     layer->addChild(rabbit, 200);
 }

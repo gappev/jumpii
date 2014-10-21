@@ -4,6 +4,7 @@ USING_NS_CC;
 
 Scene* GameScene::createScene()
 {
+    CCLOG("-----------NEW SCENE---------");
     auto scene = Scene::createWithPhysics();
     
     // Comentar o buscar manera de solo ejecutar cuando este en debug...   <---
@@ -106,8 +107,9 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
     
     if(rectOne.containsPoint(p))
     {
-        CCLOG("click on onemovement");
-        if (!rabbit->isJumping) {
+        if (!rabbit->isJumping && !rabbit->isFalling) {
+            
+            CCLOG("click on onemovement");
             rabbit->jumpByOne();
         
             auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
@@ -115,13 +117,16 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             platforms->runAction( platformsAction );
             platform->SpawnPlatform(platforms, lastPosition);
             lastPosition+=1;
+            
+            return true;
         }
-        return true; // to indicate that we have consumed it.
+        return false; // to indicate that we have consumed it.
     }
     if(rectTwo.containsPoint(p))
     {
-        CCLOG("click on twomovement");
-        if (!rabbit->isJumping) {
+        if (!rabbit->isJumping && !rabbit->isFalling) {
+            
+            CCLOG("click on twomovement");
             rabbit->jumpByTwo();
         
             auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
@@ -130,8 +135,10 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             platform->SpawnPlatform(platforms, lastPosition);
             platform->SpawnPlatform(platforms, lastPosition+1);
             lastPosition+=2;
+            
+            return true;
         }
-        return true; // to indicate that we have consumed it.
+        return false; // to indicate that we have consumed it.
     }
     
     return false;
@@ -144,9 +151,21 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     
     if ( ( EDGE_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( EDGE_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
     {
-        auto scene = GameOverScene::createScene();
+        auto scene = MainMenuScene::createScene();
         
         Director::getInstance( )->replaceScene( TransitionFade::create( TRANSITION_TIME, scene ) );
+    }
+    if ( ( NO_PLATFORM_COLLISION_BITMASK == a->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == b->getCollisionBitmask() ) || ( NO_PLATFORM_COLLISION_BITMASK == b->getCollisionBitmask( ) && RABBIT_COLLISION_BITMASK == a->getCollisionBitmask() ) )
+    {
+        CCLOG("CAIIIIII");
+        rabbit->isFalling = true;
+        this->getScene()->getPhysicsWorld()->setGravity(Vect(0, -980));
+        if (a->getCollisionBitmask() == NO_PLATFORM_COLLISION_BITMASK) {
+            a->removeFromWorld();
+        }
+        if (b->getCollisionBitmask() == NO_PLATFORM_COLLISION_BITMASK) {
+            b->removeFromWorld();
+        }
     }
     
     return true;
