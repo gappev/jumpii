@@ -8,6 +8,7 @@ Scene* GameScene::createScene()
     
     // Comentar o buscar manera de solo ejecutar cuando este en debug...   <---
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    //scene->getPhysicsWorld( )->setGravity( Vect( 0, 0 ) );
     
     auto layer = GameScene::create();
     layer->SetPhysicsWorld(scene->getPhysicsWorld());
@@ -46,12 +47,12 @@ bool GameScene::init()
     //
 
     rabbit = new Rabbit(this);
-    Platform *plat = new Platform();
+    platform = new Platform();
     platforms = Node::create();
     
-    for(int i=0; i<8; i++)
+    for(int i=0; i<TOTAL_PLATFORMS; i++)
     {
-        plat->SpawnPlatform(platforms, i);
+        platform->SpawnPlatform(platforms, i);
     }
     
     // Adding movement buttons
@@ -76,6 +77,8 @@ bool GameScene::init()
     this->addChild(menu, 1);
     this->addChild(edgeNode, 1);
     this->addChild(background);
+    
+    lastPosition = TOTAL_PLATFORMS;
     return true;
 }
 
@@ -92,14 +95,36 @@ void GameScene::SetPhysicsWorld(cocos2d::PhysicsWorld *world)
 bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
 {
     Vec2 p = touch->getLocation();
-    Rect rect = oneMovementButton->getBoundingBox();
+    Rect rectOne = oneMovementButton->getBoundingBox();
+    Rect rectTwo = twoMovementButton->getBoundingBox();
     
-    if(rect.containsPoint(p))
+    if(rectOne.containsPoint(p))
     {
         CCLOG("click on onemovement");
-        auto platformsAction = MoveBy::create( 0.01f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*8) * 1.5, 0 ));
+        if (!rabbit->isJumping) {
+        rabbit->jumpByOne();
+        
+        auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
         
         platforms->runAction( platformsAction );
+        platform->SpawnPlatform(platforms, lastPosition);
+        lastPosition+=1;
+        }
+        return true; // to indicate that we have consumed it.
+    }
+    if(rectTwo.containsPoint(p))
+    {
+        CCLOG("click on twomovement");
+        if (!rabbit->isJumping) {
+        rabbit->jumpByTwo();
+        
+        auto platformsAction = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+        
+        platforms->runAction( platformsAction );
+        platform->SpawnPlatform(platforms, lastPosition);
+        platform->SpawnPlatform(platforms, lastPosition+1);
+        lastPosition+=2;
+        }
         return true; // to indicate that we have consumed it.
     }
     

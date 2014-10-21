@@ -21,4 +21,6 @@
 
 #define PLATFORM_WIDTH 320
 
+#define TOTAL_PLATFORMS 8
+
 #endif

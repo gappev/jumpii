@@ -19,11 +19,19 @@ class Rabbit
 public:
     Rabbit(Layer *layer);
     
+    void jumpByOne();
+    void jumpByTwo();
+    
+    bool isJumping;
+    
 private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     
     Sprite *rabbit;
+    PhysicsBody *rabbitBody;
+    
+    void isNotJumping();
     
 };
 

@@ -24,6 +24,8 @@ public:
 private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
+    
+    bool isOKToAdd;
 };
 
 #endif /* defined(__jumpii__Platform__) */

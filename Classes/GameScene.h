@@ -25,6 +25,8 @@ private:
     MenuItemFont *backButton;
     Rabbit *rabbit;
     Node *platforms;
+    Platform *platform;
+    int lastPosition;
     
     // Functions
     void SetPhysicsWorld ( PhysicsWorld *world );
