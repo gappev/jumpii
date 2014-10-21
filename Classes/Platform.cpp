@@ -41,8 +41,9 @@ void Platform::SpawnPlatform(cocos2d::Node *layer, int pos)
     
         layer->addChild(platform,100);
     } else {
+        //Empty
         auto edgeNode = Node::create();
-        auto edgeBody = PhysicsBody::createEdgeBox(Size(PLATFORM_WIDTH, PLATFORM_HEIGHT), PhysicsMaterial(0,0,0), 1);
+        auto edgeBody = PhysicsBody::createEdgeBox(Size(PLATFORM_WIDTH, PLATFORM_HEIGHT - PLATFORM_HEIGHT_GAP), PhysicsMaterial(0,0,0), 1);
         
         edgeBody->setDynamic(false);
         edgeBody->setCollisionBitmask( NO_PLATFORM_COLLISION_BITMASK );
