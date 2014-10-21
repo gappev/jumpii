@@ -50,8 +50,8 @@ bool GameScene::init()
     //
 
     auto label = Label::createWithTTF("label test","fonts/Marker Felt.ttf",32);
-    label->setPosition(Point(visibleSize.width/2,visibleSize.height*0.6));
-    this->addChild(label);
+    //label->setPosition(Point(visibleSize.width/2,visibleSize.height*0.6));
+    //this->addChild(label);
 
     rabbit = new Rabbit(this);
     platform = new Platform();

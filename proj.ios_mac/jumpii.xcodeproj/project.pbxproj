@@ -307,8 +307,6 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFA488A919F6216400474C85 /* falling.mp3 */,
-				BFA488A719F61D8000474C85 /* jumping.mp3 */,
 				BFA488A619F61D3D00474C85 /* sounds */,
 				23B7D6B219F4111B00716EDE /* button.png */,
 				BF9FE19A19F375BD0093E59B /* rabbit.png */,
@@ -402,6 +400,8 @@
 		BFA488A619F61D3D00474C85 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BFA488A919F6216400474C85 /* falling.mp3 */,
+				BFA488A719F61D8000474C85 /* jumping.mp3 */,
 			);
 			name = sounds;
 			sourceTree = "<group>";
