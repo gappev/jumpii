@@ -11,6 +11,7 @@
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2346254019F750D30067742E /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2346253F19F750D30067742E /* cloud.png */; };
 		235CCAD919F2EE3F00AD435F /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD319F2EE3F00AD435F /* GameOverScene.cpp */; };
 		235CCADA19F2EE3F00AD435F /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD519F2EE3F00AD435F /* GameScene.cpp */; };
 		235CCADB19F2EE3F00AD435F /* LeaderBoardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD719F2EE3F00AD435F /* LeaderBoardScene.cpp */; };
@@ -114,6 +115,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* jumpii iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jumpii iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2346253F19F750D30067742E /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		235CCAD319F2EE3F00AD435F /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
 		235CCAD419F2EE3F00AD435F /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		235CCAD519F2EE3F00AD435F /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2346253F19F750D30067742E /* cloud.png */,
 				BFA488A619F61D3D00474C85 /* sounds */,
 				23B7D6B219F4111B00716EDE /* button.png */,
 				BF9FE19A19F375BD0093E59B /* rabbit.png */,
@@ -529,6 +532,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				2346254019F750D30067742E /* cloud.png in Resources */,
 				23B7D6B319F4111B00716EDE /* button.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
