@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "Cloud.h"
 #include "Definitions.h"
 
 using namespace cocos2d;

@@ -34,7 +34,11 @@ bool MainMenuScene::init()
     Menu *menu = Menu::create(playButton, NULL);
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
-    this->addChild(logo,1);
+    for(auto i =0; i<3; i++){
+        Cloud *cloud = new Cloud(this);
+    }
+    
+    this->addChild(logo,10);
     this->addChild(background);
     this->addChild(menu, 1);
     return true;

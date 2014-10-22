@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2346254019F750D30067742E /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2346253F19F750D30067742E /* cloud.png */; };
+		2346254319F753290067742E /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2346254119F753290067742E /* Cloud.cpp */; };
 		235CCAD919F2EE3F00AD435F /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD319F2EE3F00AD435F /* GameOverScene.cpp */; };
 		235CCADA19F2EE3F00AD435F /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD519F2EE3F00AD435F /* GameScene.cpp */; };
 		235CCADB19F2EE3F00AD435F /* LeaderBoardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235CCAD719F2EE3F00AD435F /* LeaderBoardScene.cpp */; };
@@ -116,6 +117,8 @@
 		1D6058910D05DD3D006BFB54 /* jumpii iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jumpii iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2346253F19F750D30067742E /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
+		2346254119F753290067742E /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cloud.cpp; sourceTree = "<group>"; };
+		2346254219F753290067742E /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
 		235CCAD319F2EE3F00AD435F /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
 		235CCAD419F2EE3F00AD435F /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		235CCAD519F2EE3F00AD435F /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				BF1F18C319F361E20060EDF6 /* Rabbit.h */,
 				235CCAEC19F31E7300AD435F /* Platform.cpp */,
 				235CCAED19F31E7300AD435F /* Platform.h */,
+				2346254119F753290067742E /* Cloud.cpp */,
+				2346254219F753290067742E /* Cloud.h */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				235CCADB19F2EE3F00AD435F /* LeaderBoardScene.cpp in Sources */,
+				2346254319F753290067742E /* Cloud.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* MainMenuScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
