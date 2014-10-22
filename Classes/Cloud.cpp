@@ -20,7 +20,7 @@ Cloud::Cloud(Layer* layer)
     cloud->setScale(0.4);
     
     auto height = arc4random() % 800 + 700;
-    cloud->setPosition(Point(visibleSize.width - 100, height));
+    cloud->setPosition(Point(visibleSize.width - 100 * (arc4random()%20), height));
     
     layer->addChild(cloud,5);
     

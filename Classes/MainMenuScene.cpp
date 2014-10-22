@@ -34,7 +34,7 @@ bool MainMenuScene::init()
     Menu *menu = Menu::create(playButton, NULL);
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
-    for(auto i =0; i<3; i++){
+    for(auto i =0; i<5+arc4random()%16; i++){
         Cloud *cloud = new Cloud(this);
     }
     
