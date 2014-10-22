@@ -32,6 +32,14 @@ bool GameScene::init()
     // Background
     background = Sprite::create("background.png");
     background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
+
+    auto edgeBody = PhysicsBody::createEdgeBox(Size(visibleSize.width*2, visibleSize.height*2), PHYSICSBODY_MATERIAL_DEFAULT, 10);
+    edgeBody->setCollisionBitmask( EDGE_COLLISION_BITMASK );
+    edgeBody->setContactTestBitmask( true );
+    
+    auto edgeNode = Node::create();
+    edgeNode->setPosition(Point( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y ));
+    edgeNode->setPhysicsBody(edgeBody);
     
     // Temporal
     backButton = MenuItemFont::create("Back", CC_CALLBACK_0(GameScene::goToMainMenu, this));
@@ -78,7 +86,7 @@ bool GameScene::init()
     
     this->addChild(platforms, 100);
     this->addChild(menu, 1);
-    
+    this->addChild(edgeNode, 1);
     this->addChild(background);
     
     lastPosition = TOTAL_PLATFORMS;
