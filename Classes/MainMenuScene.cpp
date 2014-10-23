@@ -2,6 +2,10 @@
 
 USING_NS_CC;
 
+MainMenuScene::~MainMenuScene() {
+    unscheduleAllSelectors();
+}
+
 Scene* MainMenuScene::createScene()
 {
     auto scene = Scene::create();
@@ -34,9 +38,10 @@ bool MainMenuScene::init()
     Menu *menu = Menu::create(playButton, NULL);
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
-    for(auto i =0; i<5+arc4random()%16; i++){
-        Cloud *cloud = new Cloud(this);
+    for(auto i =0; i<5+arc4random()%5; i++){
+        Cloud *cloud = new Cloud(this, false);
     }
+    schedule(schedule_selector(MainMenuScene::addClouds),15.0f);
     
     this->addChild(logo,10);
     this->addChild(background);
@@ -49,6 +54,14 @@ void MainMenuScene::startGame()
     Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, GameScene::createScene()));
 }
 
+void MainMenuScene::addClouds(float dt) {
+    int rnd = arc4random() % 2;
+    if (rnd == 1) {
+        for(auto i =0; i<3+arc4random()%5; i++){
+            Cloud *cloud = new Cloud(this, true);
+        }
+    }
+}
 
 void MainMenuScene::menuCloseCallback(Ref* pSender)
 {

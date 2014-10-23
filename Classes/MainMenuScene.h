@@ -18,6 +18,7 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     CREATE_FUNC(MainMenuScene);
+    ~MainMenuScene();
     
 private:
     // Properties
@@ -27,6 +28,7 @@ private:
     
     // Functions
     void startGame();
+    void addClouds(float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

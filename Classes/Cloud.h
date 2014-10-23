@@ -16,7 +16,7 @@ using namespace cocos2d;
 class Cloud
 {
 public:
-    Cloud(Layer* layer);
+    Cloud(Layer* layer, bool fromEdge);
         
 private:
     cocos2d::Size visibleSize;

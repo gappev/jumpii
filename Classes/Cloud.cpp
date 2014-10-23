@@ -9,23 +9,36 @@
 #include "Cloud.h"
 
 
-Cloud::Cloud(Layer* layer)
+Cloud::Cloud(Layer* layer, bool fromEdge)
 {
     
     visibleSize = Director::getInstance( )->getVisibleSize( );
     origin = Director::getInstance( )->getVisibleOrigin( );
 
     cloud = Sprite::create("cloud.png");
-    cloud->setOpacity(128);
-    cloud->setScale(0.4);
+    if (fromEdge) {
+        cloud->setOpacity(0);
+    }
+    cloud->setScale(0.5);
     
     auto height = arc4random() % 800 + 700;
-    cloud->setPosition(Point(visibleSize.width - 100 * (arc4random()%20), height));
+    if (!fromEdge) {
+        cloud->setPosition(Point(visibleSize.width - 100 * (arc4random()%20), height));
+    }
+    else {
+        cloud->setPosition(Point(visibleSize.width /*+ (cloud->getContentSize().width/2)*/, height));
+    }
     
     layer->addChild(cloud,5);
     
     auto speed = arc4random() % 60 + 30;
-    cloud->runAction(MoveTo::create(speed, Point(-500, height)));
+    auto moveTo = MoveTo::create(speed, Point(-500, height));
+    if (fromEdge) {
+        auto fadeIn = FadeIn::create(1);
+        cloud->runAction(Sequence::create(fadeIn, moveTo, NULL));
+    } else {
+        cloud->runAction(moveTo);
+    }
     
     CCLOG("Height: %d",height);
 }
