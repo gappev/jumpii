@@ -38,10 +38,11 @@ bool MainMenuScene::init()
     Menu *menu = Menu::create(playButton, NULL);
     menu->setPosition(Point(visibleSize.width/2, visibleSize.height/4));
     
-    for(auto i =0; i<5+arc4random()%5; i++){
-        Cloud *cloud = new Cloud(this, false);
+    cloudFactory = new Cloud();
+    for(auto i =0; i<INITIAL_RANDOM_CLOUDS_COUNT; i++){
+        cloudFactory->spawnCloud(this, false);
     }
-    schedule(schedule_selector(MainMenuScene::addClouds),15.0f);
+    schedule(schedule_selector(MainMenuScene::addClouds), ADDING_CLOUDS_TIME);
     
     this->addChild(logo,10);
     this->addChild(background);
@@ -51,14 +52,15 @@ bool MainMenuScene::init()
 
 void MainMenuScene::startGame()
 {
+    unscheduleAllSelectors();
     Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, GameScene::createScene()));
 }
 
 void MainMenuScene::addClouds(float dt) {
     int rnd = arc4random() % 2;
     if (rnd == 1) {
-        for(auto i =0; i<3+arc4random()%5; i++){
-            Cloud *cloud = new Cloud(this, true);
+        for(auto i =0; i<LATER_RANDOM_CLOUDS_COUNT; i++){
+            cloudFactory->spawnCloud(this, true);
         }
     }
 }

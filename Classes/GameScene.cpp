@@ -30,8 +30,17 @@ bool GameScene::init()
     origin = Director::getInstance()->getVisibleOrigin();
     
     // Background
-    background = Sprite::create("background.png");
-    background->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
+    backgrounds = Node::create();
+    
+    background1 = Sprite::create("background.png");
+    background1->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
+    //background1->setFlippedX(true);
+    background2 = Sprite::create("background.png");
+    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH , visibleSize.height/2) );
+    background2->setFlippedX(true);
+    
+    backgrounds->addChild(background1);
+    backgrounds->addChild(background2);
 
     auto edgeBody = PhysicsBody::createEdgeBox(Size(visibleSize.width*2, visibleSize.height*2), PHYSICSBODY_MATERIAL_DEFAULT, 10);
     edgeBody->setCollisionBitmask( EDGE_COLLISION_BITMASK );
@@ -61,6 +70,12 @@ bool GameScene::init()
         platform->SpawnPlatform(platforms, i);
     }
     
+    cloudFactory = new Cloud();
+    for(auto i =0; i<INITIAL_RANDOM_CLOUDS_COUNT; i++){
+        cloudFactory->spawnCloud(this, false);
+    }
+    schedule(schedule_selector(GameScene::addClouds), ADDING_CLOUDS_TIME);
+    
     // Adding movement buttons
     oneMovementButton = Sprite::create("button.png");
     twoMovementButton = Sprite::create("button.png");
@@ -85,11 +100,12 @@ bool GameScene::init()
     this->addChild(twoMovementButton,200);
     
     this->addChild(platforms, 100);
-    this->addChild(menu, 1);
+    this->addChild(menu, 100);
     this->addChild(edgeNode, 1);
-    this->addChild(background);
+    this->addChild(backgrounds);
     
     lastPosition = TOTAL_PLATFORMS;
+    whichBackground = false;
     
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("jumping.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("falling.mp3");
@@ -127,6 +143,20 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
         
             platforms->runAction( platformsAction );
+            if (lastPosition % TOTAL_PLATFORMS == 0) {
+                if (whichBackground) {
+                    background1->setPositionX(visibleSize.width/2 + BACKGROUND_WIDTH);
+                    //background2->setPositionX(visibleSize.width/2);
+                } else {
+                    background2->setPositionX(visibleSize.width/2 + BACKGROUND_WIDTH);
+                    //background1->setPositionX(visibleSize.width/2);
+                }
+                whichBackground = !whichBackground;
+            }
+            auto movePlatform2 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH), 0 ));
+            auto platformsAction2 = Sequence::create(DelayTime::create(0.05f), movePlatform2, NULL);
+            
+            backgrounds->runAction(platformsAction2);
             platform->SpawnPlatform(platforms, lastPosition);
             lastPosition+=1;
             
@@ -148,6 +178,28 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
             
             platforms->runAction( platformsAction );
+            if (lastPosition % TOTAL_PLATFORMS == 0) {
+                if (whichBackground) {
+                    background1 = Sprite::create("background.png");
+                    background1->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                    //backgrounds->getChildren().erase(0);
+                    background1->setFlippedX(true);
+                    backgrounds->addChild(background1);
+                    //background2->setPositionX(visibleSize.width/2);
+                } else {
+                    background2 = Sprite::create("background.png");
+                    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                    //backgrounds->getChildren().erase(0);
+                    background2->setFlippedX(true);
+                    backgrounds->addChild(background2);
+                    //background1->setPositionX(visibleSize.width/2);
+                }
+                whichBackground = !whichBackground;
+            }
+            auto movePlatform2 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+            auto platformsAction2 = Sequence::create(DelayTime::create(0.05f), movePlatform2, NULL);
+            
+            backgrounds->runAction( platformsAction2 );
             platform->SpawnPlatform(platforms, lastPosition);
             platform->SpawnPlatform(platforms, lastPosition+1);
             lastPosition+=2;
@@ -171,6 +223,7 @@ bool GameScene::onContactBegin( cocos2d::PhysicsContact &contact )
     {
         auto scene = MainMenuScene::createScene();
         
+        unscheduleAllSelectors();
         GameData::getInstance()->addScore(this->score);
         Director::getInstance( )->replaceScene( TransitionFade::create( TRANSITION_TIME, scene ) );
     }
@@ -199,4 +252,25 @@ void GameScene::addToScore(int amountOfJumps)
     
     auto scoreString = __String::createWithFormat( "Score: %i", score );
     scoreLabel->setString(scoreString->getCString());
+}
+
+void GameScene::addClouds(float dt) {
+    int rnd = arc4random() % 2;
+    if (rnd == 1) {
+        for(auto i =0; i<LATER_RANDOM_CLOUDS_COUNT; i++){
+            cloudFactory->spawnCloud(this, true);
+        }
+    }
+}
+
+void GameScene::moveBackground(float dt) {
+    /*if (backgroundDirection) { //Hacia adelante
+        auto moveBy = MoveBy::create(MOVE_BACKGROUND_TIME, Point(BACKGROUND_MOVEMENT, 0));
+        background->runAction(moveBy);
+    } else { //Hacia atras
+        auto moveBy = MoveBy::create(MOVE_BACKGROUND_TIME, Point(-BACKGROUND_MOVEMENT, 0));
+        background->runAction(moveBy);
+    }
+    
+    backgroundDirection = !backgroundDirection;*/
 }

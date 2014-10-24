@@ -25,6 +25,7 @@ private:
     MenuItemFont *playButton;
     Sprite *background;
     Sprite *logo;
+    Cloud *cloudFactory;
     
     // Functions
     void startGame();

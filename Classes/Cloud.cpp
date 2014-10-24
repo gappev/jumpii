@@ -9,13 +9,14 @@
 #include "Cloud.h"
 
 
-Cloud::Cloud(Layer* layer, bool fromEdge)
+Cloud::Cloud()
 {
-    
     visibleSize = Director::getInstance( )->getVisibleSize( );
     origin = Director::getInstance( )->getVisibleOrigin( );
+}
 
-    cloud = Sprite::create("cloud.png");
+void Cloud::spawnCloud(cocos2d::Layer *layer, bool fromEdge) {
+    Sprite* cloud = Sprite::create("cloud.png");
     if (fromEdge) {
         cloud->setOpacity(0);
     }
@@ -26,7 +27,7 @@ Cloud::Cloud(Layer* layer, bool fromEdge)
         cloud->setPosition(Point(visibleSize.width - 100 * (arc4random()%20), height));
     }
     else {
-        cloud->setPosition(Point(visibleSize.width /*+ (cloud->getContentSize().width/2)*/, height));
+        cloud->setPosition(Point(visibleSize.width + (cloud->getContentSize().width/2), height));
     }
     
     layer->addChild(cloud,5);
@@ -39,6 +40,5 @@ Cloud::Cloud(Layer* layer, bool fromEdge)
     } else {
         cloud->runAction(moveTo);
     }
-    
-    CCLOG("Height: %d",height);
 }
+

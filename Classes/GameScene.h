@@ -9,6 +9,7 @@
 #include "GameOverScene.h"
 #include "SimpleAudioEngine.h"
 #include "GameData.h"
+#include "Cloud.h"
 
 using namespace cocos2d;
 
@@ -24,12 +25,14 @@ public:
 private:
     // Properties
     PhysicsWorld *world;
-    Sprite *background, *oneMovementButton, *twoMovementButton;
+    Sprite *background1, *background2, *oneMovementButton, *twoMovementButton;
     MenuItemFont *backButton;
     Rabbit *rabbit;
-    Node *platforms;
+    Node *platforms, *backgrounds;
     Platform *platform;
+    Cloud *cloudFactory;
     Label *scoreLabel;
+    bool whichBackground;
     int lastPosition;
     int score;
     Size visibleSize;
@@ -39,6 +42,8 @@ private:
     void SetPhysicsWorld ( PhysicsWorld *world );
     void goToMainMenu();
     void addToScore(int amountOfJumps );
+    void addClouds(float dt);
+    void moveBackground(float dt);
     
     //Events
     bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event );
