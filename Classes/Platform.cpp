@@ -27,6 +27,7 @@ void Platform::SpawnPlatform(cocos2d::Node *layer, int pos)
             isOKToAdd = true;
         }
     }
+    isOKToAdd = true;
     if (isOKToAdd) {
         auto platform = Sprite::create("platform-1.png");
         auto platformBody = PhysicsBody::createBox(Size(Point(platform->getContentSize().width, platform->getContentSize().height- PLATFORM_HEIGHT_GAP)));

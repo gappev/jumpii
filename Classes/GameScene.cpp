@@ -30,17 +30,19 @@ bool GameScene::init()
     origin = Director::getInstance()->getVisibleOrigin();
     
     // Background
-    backgrounds = Node::create();
+    //backgrounds = Node::create();
     
     background1 = Sprite::create("background.png");
     background1->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
+    background1->setFlippedX(true);
+    //background1->setPosition(Point( visibleSize.width/2 , visibleSize.height/2) );
     //background1->setFlippedX(true);
     background2 = Sprite::create("background.png");
-    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH , visibleSize.height/2) );
-    background2->setFlippedX(true);
+    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+    //background2->setFlippedX(true);
     
-    backgrounds->addChild(background1);
-    backgrounds->addChild(background2);
+    //backgrounds->addChild(background1);
+    //backgrounds->addChild(background2);
 
     auto edgeBody = PhysicsBody::createEdgeBox(Size(visibleSize.width*2, visibleSize.height*2), PHYSICSBODY_MATERIAL_DEFAULT, 10);
     edgeBody->setCollisionBitmask( EDGE_COLLISION_BITMASK );
@@ -102,7 +104,8 @@ bool GameScene::init()
     this->addChild(platforms, 100);
     this->addChild(menu, 100);
     this->addChild(edgeNode, 1);
-    this->addChild(backgrounds);
+    this->addChild(background1);
+    this->addChild(background2);
     
     lastPosition = TOTAL_PLATFORMS;
     whichBackground = false;
@@ -138,27 +141,37 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
         
             DelayTime::create(0.3f);
 
+                if (background2->getPositionX() <= -(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4))) {
+                    CCLOG("%f<=%i",background2->getPositionX(),-(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4)));
+                    /*background1->setPosition(Point( this->visibleSize.width/2, this->visibleSize.height/2) );*/
+                    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                    //background2->setPositionX(visibleSize.width/2);
+                }
+                if (background1->getPositionX() <= -(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4))) {
+                    CCLOG("%f<=%i",background1->getPositionX(),-(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4)));
+                    /*background2->setPosition(Point( this->visibleSize.width/2, this->visibleSize.height/2) );*/
+                    background1->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                    //background1->setPositionX(visibleSize.width/2);
+                }
             
             auto movePlatform = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -PLATFORM_WIDTH, 0 ));
             auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
         
             platforms->runAction( platformsAction );
-            if (lastPosition % TOTAL_PLATFORMS == 0) {
-                if (whichBackground) {
-                    background1->setPositionX(visibleSize.width/2 + BACKGROUND_WIDTH);
-                    //background2->setPositionX(visibleSize.width/2);
-                } else {
-                    background2->setPositionX(visibleSize.width/2 + BACKGROUND_WIDTH);
-                    //background1->setPositionX(visibleSize.width/2);
-                }
-                whichBackground = !whichBackground;
-            }
-            auto movePlatform2 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH), 0 ));
+            auto movePlatform2 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
             auto platformsAction2 = Sequence::create(DelayTime::create(0.05f), movePlatform2, NULL);
             
-            backgrounds->runAction(platformsAction2);
+            background1->runAction( platformsAction2 );
+            
+            auto movePlatform3 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+            auto platformsAction3 = Sequence::create(DelayTime::create(0.05f), movePlatform3, NULL);
+            
+            background2->runAction( platformsAction3 );
             platform->SpawnPlatform(platforms, lastPosition);
+            
             lastPosition+=1;
+            
+            
             
             addToScore(1);
 
@@ -178,31 +191,36 @@ bool GameScene::onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event )
             auto platformsAction = Sequence::create(DelayTime::create(0.05f), movePlatform, NULL);
             
             platforms->runAction( platformsAction );
-            if (lastPosition % TOTAL_PLATFORMS == 0) {
-                if (whichBackground) {
-                    background1 = Sprite::create("background.png");
-                    background1->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
-                    //backgrounds->getChildren().erase(0);
-                    background1->setFlippedX(true);
-                    backgrounds->addChild(background1);
-                    //background2->setPositionX(visibleSize.width/2);
-                } else {
-                    background2 = Sprite::create("background.png");
-                    background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
-                    //backgrounds->getChildren().erase(0);
-                    background2->setFlippedX(true);
-                    backgrounds->addChild(background2);
-                    //background1->setPositionX(visibleSize.width/2);
-                }
-                whichBackground = !whichBackground;
-            }
+            
             auto movePlatform2 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
             auto platformsAction2 = Sequence::create(DelayTime::create(0.05f), movePlatform2, NULL);
             
-            backgrounds->runAction( platformsAction2 );
+            background1->runAction( platformsAction2 );
+            
+            auto movePlatform3 = MoveBy::create( 0.0001f * (PLATFORM_WIDTH*8), Point( -(PLATFORM_WIDTH*2), 0 ));
+            auto platformsAction3 = Sequence::create(DelayTime::create(0.05f), movePlatform3, NULL);
+            
+            background2->runAction( platformsAction3 );
+            
             platform->SpawnPlatform(platforms, lastPosition);
             platform->SpawnPlatform(platforms, lastPosition+1);
+            
+            
             lastPosition+=2;
+            
+            if (background2->getPositionX() <= -(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4))) {
+                CCLOG("%f<=%i",background2->getPositionX(),-(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4)));
+                /*background1->setPosition(Point( this->visibleSize.width/2, this->visibleSize.height/2) );*/
+                background2->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                //background2->setPositionX(visibleSize.width/2);
+            }
+            if (background1->getPositionX() <= -(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4))) {
+                CCLOG("%f<=%i",background1->getPositionX(),-(BACKGROUND_WIDTH-(BACKGROUND_MOVEMENT*4)));
+                /*background2->setPosition(Point( this->visibleSize.width/2, this->visibleSize.height/2) );*/
+                background1->setPosition(Point( visibleSize.width/2 + BACKGROUND_WIDTH, visibleSize.height/2) );
+                //background1->setPositionX(visibleSize.width/2);
+            }
+            
             
             addToScore(2);
 
